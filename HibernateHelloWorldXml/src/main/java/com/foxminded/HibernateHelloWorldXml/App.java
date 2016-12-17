@@ -1,6 +1,8 @@
 package com.foxminded.HibernateHelloWorldXml;
 
 import java.util.Date;
+import java.util.Random;
+
 import org.hibernate.Session;
 
 import com.foxminded.HibernateHelloWorldXml.util.HibernateUtil;
@@ -13,7 +15,7 @@ public class App {
 		session.beginTransaction();
 		DBUser user = new DBUser();
 
-		user.setUserId(100);
+		user.setUserId(new Random().nextInt(100_000));
 		user.setUsername("superman");
 		user.setCreatedBy("system");
 		user.setCreatedDate(new Date());
