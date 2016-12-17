@@ -15,7 +15,7 @@ public class App {
 		session.beginTransaction();
 		DBUser user = new DBUser();
 
-		user.setUserId(new Random().nextInt(100_000));
+//		user.setUserId(new Random().nextInt(100_000));
 		user.setUsername("superman");
 		user.setCreatedBy("system");
 		user.setCreatedDate(new Date());

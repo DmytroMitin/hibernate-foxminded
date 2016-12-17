@@ -1,9 +1,6 @@
 package com.foxminded.HibernateHelloWorldXml;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -20,6 +17,7 @@ public class DBUser implements Serializable {
 	private static final long serialVersionUID = 1815149901774645023L;
 
 	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id", unique = true, nullable = false, precision = 5, scale = 0)
 	private int userId;
 
