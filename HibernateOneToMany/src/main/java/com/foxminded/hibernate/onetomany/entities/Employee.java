@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 
 @Entity
@@ -21,12 +24,19 @@ public class Employee {
 	private Long employeeId;
 	
 	@Column(name="firstname")
+	@NotNull
 	private String firstname;
 	
 	@Column(name="lastname")
+    @NotNull
 	private String lastname;
-	
-	@Column(name="birth_date")
+
+	@Column(name = "salary")
+    @Min(500)
+    @Max(10_000)
+	private int salary;
+
+    @Column(name="birth_date")
 	private Date birthDate;
 	
 	@Column(name="cell_phone")
@@ -37,7 +47,6 @@ public class Employee {
 	private Department department;
 	
 	public Employee() {
-		
 	}
 	
 	public Employee(String firstname, String lastname, String phone) {
@@ -71,6 +80,14 @@ public class Employee {
 		this.lastname = lastname;
 	}
 
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
 	public Date getBirthDate() {
 		return birthDate;
 	}
@@ -95,5 +112,17 @@ public class Employee {
 		this.department = department;
 	}
 
-	
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "employeeId=" + employeeId +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", salary=" + salary +
+                ", birthDate=" + birthDate +
+                ", cellphone='" + cellphone + '\'' +
+                ", department=" + department +
+                '}';
+    }
 }
